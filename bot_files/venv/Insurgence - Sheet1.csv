@@ -1,0 +1,199 @@
+Number, none,name,Type, Type,String
+#727,,Delta Bulbasaur,Fairy,Psychic,"Starter Pokémon,Telnor Town, Erebus City"
+#728,,Delta Ivysaur,Fairy,Psychic,Evolve Only
+#729,,Delta Venusaur,Fairy,Psychic,Evolve Only
+#730,,Delta Charmander,Ghost,Dragon,"Starter Pokémon,Telnor Town, Erebus City"
+#731,,Delta Charmeleon,Ghost,Dragon,Evolve Only
+#732,,Delta Charizard,Ghost,Dragon,Evolve Only
+#733,,Delta Squirtle,Dark,Fighting,"Starter Pokémon,Telnor Town, Erebus City"
+#734,,Delta Wartortle,Dark,Fighting,Evolve Only
+#735,,Delta Blastoise,Dark,Fighting,Evolve Only
+#736,,Delta Pawniard,Flying,Fighting,Power Farm
+#737,,Delta Bisharp,Flying,Fighting,Evolve Only
+#738,,Delta Ralts,Electric,Ice,Route 4
+#739,,Delta Kirlia,Electric,Ice,Evolve Only
+#740,,Delta Gardevoir,Electric,Ice,Evolve Only
+#741,,Delta Gallade,Electric,Ice,Evolve Only
+#742,,Delta Sunkern,Fire,Poison,Route 4
+#743,,Delta Sunflora,Fire,Poison,Evolve Only
+#744,,Delta Bergmite,Rock,,Dragon Ruins
+#745,,Delta Avalugg,Rock,Dragon,Evolve Only
+#746,,Delta Scyther,Ice,Fighting,Route 3
+#747,,Delta Scizor,Ice,Fighting,Evolve Only
+#748,,Delta Scraggy,Grass,,Murk Forest
+#749,,Delta Scrafty,Grass,,Evolve Only
+#750,,Delta Combee,Steel,Fire,Route 9
+#751,,Delta Vespiquen,Steel,Fire,Evolve Only
+#752,,Delta Koffing,Electric,Flying,Miara Town
+#753,,Delta Weezing,Electric,Flying,Evolve Only
+#754,,Delta Purrloin,Ghost,Fairy,Breeding only
+#755,,Delta Liepard,Ghost,Fairy,Selene City
+#756,,Delta Phantump,Fairy,,Mount Rose
+#757,,Delta Trevenant,Fairy,Fighting,Evolve only
+#758,,Delta Snorunt,Fire,,Fiery Caverns
+#759,,Delta Glalie,Fire,Rock,Evolve Only
+#760,,Delta Froslass,Fire,,Evolve Only
+#761,,Delta Shinx,Steel,Poison,Murk Forest
+#762,,Delta Luxio,Steel,Poison,Evolve only
+#763,,Delta Luxray,Steel,Poison,Evolve only
+#764,,Delta Noibat,Grass,Steel,Ancient Tower
+#765,,Delta Noivern,Grass,Steel,Evolve only
+#766,,Delta Budew,Dark,Fairy,Utira Library
+#767,,Delta Roselia,Dark,Fairy,Evolve Only
+#768,,Delta Roserade,Dark,Fairy,Evolve Only
+#769,,Delta Drifloon,Fire,Flying,Soaring in Torren
+#770,,Delta Drifblim,Fire,Flying,Evolve Only
+#771,,Delta Grimer,Ground,,Broadcast Tower
+#772,,Delta Muk,Ground,,Evolve Only
+#773,,Delta Wooper,Grass,Fire,Vipik City
+#774,,Delta Quagsire,Grass,Fire,Evolve Only
+#775,,Delta Munchlax,Grass,,Route 8
+#776,,Delta Snorlax,Grass,,Evolve Only
+#777,,Delta Misdreavus,Ice,Fairy,Deyraan Town
+#778,,Delta Mismagius,Ice,Fairy,Evolve Only
+#779,,Delta Cyndaquil,Electric,,Satellite Tower
+#780,,Delta Quilava,Electric,Steel,Evolve Only
+#781,,Delta Typhlosion,Electric,Steel,Evolve Only
+#782,,Delta Treecko,Normal,Fighting,Holon Grasslands
+#783,,Delta Grovyle,Normal,Fighting,Evolve Only
+#784,,Delta Sceptile,Dragon,Fighting,Evolve Only
+#785,,Delta Torchic,Psychic,,Holon Pyramid
+#786,,Delta Combusken,Psychic,,Evolve Only
+#787,,Delta Blaziken,Psychic,Flying,Evolve Only
+#788,,Delta Turtwig,Water,Ground,Holon Lake
+#789,,Delta Grotle,Water,Ground,Evolve Only
+#790,,Delta Torterra,Water,Ground,Evolve Only
+#791,,Delta Snivy,Water,,Holon Lake
+#792,,Delta Servine,Water,,Evolve Only
+#793,,Delta Serperior,Water,Dragon,Evolve Only
+#794,,Delta Froakie,Grass,,Holon Marsh
+#795,,Delta Frogadier,Grass,,Evolve Only
+#796,,Delta Greninja,Grass,Fire,Evolve Only
+#797,,Delta Pidgey,Dark,Dragon,Samsara Cave
+#798,,Delta Pidgeotto,Dark,Dragon,Evolve Only
+#799,,Delta Pidgeot,Dark,Dragon,Evolve Only
+#800,,Delta Diglett,Ice,Normal,Telnor Cave
+#801,,Delta Dugtrio,Ice,Normal,Evolve Only
+#802,,Delta Growlithe,Normal,Dragon,Narra Town
+#803,,Delta Arcanine,Normal,Dragon,Evolve Only
+#804,,Delta Geodude,Psychic,Rock,Ancient Ruins
+#805,,Delta Graveler,Psychic,Rock,Evolve Only
+#806,,Delta Golem,Psychic,Rock,Evolve Only
+#807,,Delta Tentacool,Grass,Poison,Holon Marsh
+#808,,Delta Tentacruel,Grass,Poison,Evolve Only
+#809,,Delta Doduo,Psychic,,Prion Town
+#810,,Delta Dodrio,Psychic,,Evolve Only
+#811,,Delta Tangela,Ground,,Holon Desert
+#812,,Delta Tangrowth,Ground,Fighting,Evolve Only
+#813,,Delta Ditto,Water,,Metchi Town
+#814,,Delta Kabuto,Bug,Dark,Holon Jungle
+#815,,Delta Kabutops,Bug,Dark,Evolve Only
+#816,,Delta Dratini,Water,Electric,Holon Lake
+#817,,Delta Dragonair,Water,Electric,Evolve Only
+#818,,Delta Dragonite,Water,Electric,Evolve Only
+#819,,Delta Hoothoot,Ice,Flying,Holon Mountain
+#820,,Delta Noctowl,Ice,Flying,Evolve Only
+#821,,Delta Chinchou,Ghost,Fire,Cortisol Road Grotto
+#822,,Delta Lanturn,Ghost,Fire,Evolve Only
+#823,,Delta Pichu,Flying,Fairy,Breeding Only
+#824,,Delta Pikachu,Flying,Fairy,Soaring in Torren
+#825,,Delta Raichu,Flying,Fairy,Evolve Only
+#826,,Delta Aipom,Ghost,Normal,Suntouched City
+#827,,Delta Ambipom,Ghost,Normal,Evolve Only
+#828,,Delta Yanma,Grass,Flying,Holon Marsh
+#829,,Delta Yanmega,Grass,Flying,Evolve Only
+#830,,Delta Girafarig,Steel,Poison,Route 16
+#831,,Delta Dunsparce,Bug,Water,Lush Island
+#832,,Delta Shuckle,Fighting,Steel,Amphitrite City
+#833,,Delta Remoraid,Fire,,Holon Volcano
+#834,,Delta Octillery,Fire,,Evolve Only
+#835,,Delta Elekid,Rock,,Holon Mountain
+#836,,Delta Electabuzz,Rock,,Evolve Only
+#837,,Delta Electivire,Rock,Dragon,Evolve Only
+#838,,Delta Magby,Water,,Holon Lake
+#839,,Delta Magmar,Water,,Evolve Only
+#840,,Delta Magmortar,Water,Steel,Evolve Only
+#841,,Delta Lotad,Psychic,Water,Helios City
+#842,,Delta Lombre,Psychic,Water,Evolve Only
+#843,,Delta Ludicolo,Psychic,Water,Evolve Only
+#844,,Delta Seedot,Electric,,Holon Mountain
+#845,,Delta Nuzleaf,Electric,,Evolve Only
+#846,,Delta Shiftry,Electric,,Evolve Only
+#847,,Delta Sableye,Fire,Rock,Holon Volcano
+#848,,Delta Mawile,Grass,Dark,Holon Grasslands
+#849,,Delta Aron,Fire,Steel,Holon Volcano
+#850,,Delta Lairon,Fire,Steel,Evolve Only
+#851,,Delta Aggron,Fire,Steel,Evolve Only
+#852,,Delta Meditite,Fairy,,Holon Mountain
+#853,,Delta Medicham,Fairy,Ground,Evolve Only
+#854,,Delta Numel,Poison,,Settlement Oscar
+#855,,Delta Camerupt,Poison,,Evolve Only
+#856,,Delta Plusle,Fire,Fairy,Battle Frontier
+#857,,Delta Minun,Ice,Fairy,Battle Frontier
+#858,,Delta Wailmer,Ice,Flying,Soaring in Holon
+#859,,Delta Wailord,Ice,Flying,Evolve Only
+#860,,Delta Feebas,Ghost,,Settlement Juliet
+#861,,Delta Milotic,Ghost,,Evolve Only
+#862,,Delta Clamperl,Dragon,,Whirl Islands
+#863,,Delta Huntail,Dragon,Dark,Evolve Only
+#864,,Delta Gorebyss,Dragon,Fairy,Evolve Only
+#865,,Delta Beldum (Spider),Ground,Bug,Breeding Only
+#866,,Delta Metang (Spider),Ground,Bug,Murk Forest
+#867,,Delta Metagross (Spider),Ground,Bug,Evolve Only
+#868,,Delta Beldum (Ruin),Grass,Rock,Settlement Foxtrot
+#869,,Delta Metang (Ruin),Grass,Rock,Evolve Only
+#870,,Delta Metagross (Ruin),Grass,Rock,Evolve Only
+#871,,Delta Buneary,Fighting,,Holon Desert Cave
+#872,,Delta Lopunny,Fighting,,Evolve Only
+#873,,Delta Riolu,Dark,,Holon Pyramid
+#874,,Delta Lucario,Dark,Ground,Evolve Only
+#875,,Delta Croagunk,Fire,,Holon Jungle
+#876,,Delta Toxicroak,Fire,,Evolve Only
+#877,,Delta Venipede,Rock,Fire,Holon Volcano
+#878,,Delta Whirlipede,Rock,Fire,Evolve Only
+#879,,Delta Scolipede,Rock,Fire,Evolve Only
+#880,,Delta Petilil (Water),Water,Fire,Victory Road
+#881,,Delta Lilligant (Water),Water,Fire,Evolve Only
+#882,,Delta Petilil (Fairy),Fairy,Flying,Holon Grasslands
+#883,,Delta Lilligant (Fairy),Fairy,Flying,Evolve Only
+#884,,Delta Solosis,Ghost,Rock,Broadcast Tower
+#885,,Delta Duosion,Ghost,Rock,Evolve Only
+#886,,Delta Reuniclus,Ghost,Rock,Evolve Only
+#887,,Delta Darumaka,Dark,Ghost,Holon Jungle
+#888,,Delta Darmanitan,Dark,Ghost,Evolve Only
+#889,,Delta Maractus,Steel,,Settlement Alfa
+#890,,Delta Dwebble (Berry),Grass,Poison,Holon Jungle
+#891,,Delta Crustle (Berry),Grass,Poison,Evolve Only
+#892,,Delta Dwebble (Cake),Fairy,Normal,Route 1
+#893,,Delta Crustle (Cake),Fairy,Normal,Evolve Only
+#894,,Delta Yamask,Steel,Poison,Cerebrum Town
+#895,,Delta Cofagrigus,Steel,Poison,Evolve Only
+#896,,Delta Emolga,Fire,Dark,Roggan Town
+#897,,Delta Karrablast,Fairy,,Holon Grasslands
+#898,,Delta Escavalier,Fairy,,Evolve Only
+#899,,Delta Foongus,Ghost,Dark,Holon Jungle
+#900,,Delta Amoonguss,Ghost,Dark,Evolve Only
+#901,,Delta Litwick,Fairy,Fire,Sonata Hills
+#902,,Delta Lampent,Fairy,Fire,Evolve Only
+#903,,Delta Chandelure,Fairy,Fire,Evolve Only
+#904,,Delta Axew,Water,,Trade Outpost
+#905,,Delta Fraxure,Water,,Evolve Only
+#906,,Delta Haxorus,Water,Steel,Evolve Only
+#907,,Delta Golett,Fighting,Steel,Battle Frontier
+#908,,Delta Golurk,Fighting,Steel,Evolve Only
+#909,,Delta Heatmor,Steel,Poison,Helios Sewers
+#910,,Delta Deino,Ground,Poison,Slither Forest
+#911,,Delta Zweilous,Ground,Poison,Evolve Only
+#912,,Delta Hydreigon,Ground,Poison,Evolve Only
+#913,,Delta Larvesta,Dark,Poison,Perfection Laboratory
+#914,,Delta Volcarona,Dark,Poison,Evolve Only
+#915,,Delta Amaura,Grass,Water,Lost Pond
+#916,,Delta Aurorus,Grass,Water,Evolve Only
+#917,,Delta Goomy,Ground,Water,Holon Marsh
+#918,,Delta Sliggoo,Ground,Water,Evolve Only
+#919,,Delta Goodra,Ground,Water,Evolve Only
+#920,,Delta Regirock,Ground,,Holon Desert Cave
+#921,,Delta Regice,Water,,Holon Undercave
+#922,,Delta Registeel,Fire,,Holon Volcano
+#923,,Delta Meloetta,Dark,Fairy,Mimry Gardens
+#924,,Delta Hoopa,Flying,,Cloud Bottle
