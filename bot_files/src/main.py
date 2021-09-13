@@ -3,7 +3,7 @@ import os
 import numpy as np
 import re
 import pandas as pd
-
+from dotenv import load_dotenv
 
 def main():
     # print(os.listdir())
@@ -130,9 +130,8 @@ def main():
                 rand_classes = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
                 await message.channel.send(rand_classes[np.random.randint(1, len(rand_classes))])
 
-
-    # client.run(os.environ['TOKEN'])
-    client.run('Nzc2MDE2MDkwODEwNjc5MzE4.X6uvTQ.c7rcMHdX8iURzV6XsdWQ-3dAF7s')
+    load_dotenv()
+    client.run(os.environ['TOKEN'])
 
 
 if __name__ == "__main__":
