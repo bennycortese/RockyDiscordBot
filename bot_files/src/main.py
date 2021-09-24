@@ -4,19 +4,24 @@ import numpy as np
 import re
 import pandas as pd
 from dotenv import load_dotenv
+import requests
+
 
 def main():
     # print(os.listdir())
     pokemon = pd.read_csv('pokemon.csv')
     delta_pokemon = pd.read_csv('Insurgence - Sheet1.csv')
     client = discord.Client()
-    dice_pattern = '^\$d[0-9]*'
-    grouped_expression = '^\$\([0-9]*[\.]?[0-9]*[-|\+|\*|/|%][0-9]*[\.]?[0-9]*\)$'
-    pokemon_pattern = '\$(fire|water|grass|normal|electric|ice|fighting|poison|ground|flying|psychic|bug|rock|ghost|dark|dragon|steel|fairy){1}'
-    stats_pattern = '\$stats .*'
-    rand_pokemon = '\$pokemon random [0-9]*'
-    rand_pokemon_delta = '\$pokemon delta random [0-9]*'
-    rand_class_pattern = '\$rand class'
+    dice_pattern = '^\\$d[0-9]*'
+    grouped_expression = '^\\$\\([0-9]*[\\.]?[0-9]*[-|\\+|\\*|/|%][0-9]*[\\.]?[0-9]*\\)$'
+    pokemon_pattern = '\\$(Fire|Water|Grass|Normal|Electric|Ice|Fighting|Poison|Ground|Flying|Psychic|Bug|Rock|Ghost|Dark|Dragon|Steel|Fairy)'
+    stats_pattern = '\\$stats .*'
+    rand_pokemon = '\\$pokemon random [0-9]*'
+    rand_pokemon_delta = '\\$pokemon delta random [0-9]*'
+    rand_class_pattern = '\\$rand class'
+    sandwich = '\\$sandwich'
+    request_pattern = "\\$web_request (\\s|\\S)*"
+    img_pattern = "src=\"[^\"]*\"|SRC=\"[^\"]*\""  #bizzare bug where (src|SRC) doesn't work, not sure why though, it would simplify the code
 
     @client.event
     async def on_ready():
@@ -76,13 +81,13 @@ def main():
                             except Exception:
                                 await message.channel.send(float(left) % float(right))
         if message.content.startswith('$'):
-            if (result := re.match(pokemon_pattern, message.content) is not None):
-                typing = message.content[1:].capitalize()
+            if (result := re.match(pokemon_pattern, message.content)) is not None:
+                typing = message.content[1:]  # Changed to handle dual typing case
                 typed_poke = pokemon[pokemon["typing"] == typing]
                 print(typing)
                 await message.channel.send(str(typed_poke["name"].values.tolist())[:1999])
 
-            if (result := re.match(rand_pokemon, message.content) is not None):
+            if (result := re.match(rand_pokemon, message.content)) is not None:
                 num = int(message.content[16:])
                 rand_pokemon_set = set()
                 pokemon_names = pokemon["name"].values.tolist()
@@ -90,14 +95,14 @@ def main():
                     await message.channel.send("Not that many pokemon exist!")
                 else:
                     rand_pokemon_names = []
-                    while (len(rand_pokemon_set) < num):
+                    while len(rand_pokemon_set) < num:
                         rand_pokemon_set.add(np.random.randint(1, len(pokemon_names)))
                     rand_pokemon_set = list(rand_pokemon_set)
                     for i in range(len(rand_pokemon_set)):
                         rand_pokemon_names.append(pokemon_names[rand_pokemon_set[i]])
                     await message.channel.send(rand_pokemon_names[:1999])
 
-            if (result := re.match(rand_pokemon_delta, message.content) is not None):
+            if (result := re.match(rand_pokemon_delta, message.content)) is not None:
                 num = int(message.content[22:])
                 rand_pokemon_set = set()
                 gen_6_mons = pokemon[pokemon["pokedex_id"] <= 721]
@@ -115,7 +120,7 @@ def main():
                         rand_pokemon_names.append(pokemon_names[rand_pokemon_set[i]])
                     await message.channel.send(rand_pokemon_names[:1999])
 
-            if (result := re.match(stats_pattern, message.content) is not None):
+            if (result := re.match(stats_pattern, message.content)) is not None:
                 name = message.content[7:].capitalize()
                 name_pokemon = pokemon[pokemon["name"] == name]
                 name_data = name_pokemon.loc[:,
@@ -126,9 +131,34 @@ def main():
                     "hp: %s\nattack: %s\ndefense: %s\nspecial_attack: %s\nspecial_defense: %s\nspeed: %s" % (
                         name_data[0], name_data[1], name_data[2], name_data[3], name_data[4], name_data[5]))
 
-            if (result := re.match(rand_class_pattern, message.content) is not None):
-                rand_classes = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
+            if (result := re.match(rand_class_pattern, message.content)) is not None:
+                rand_classes = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin",
+                                "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
                 await message.channel.send(rand_classes[np.random.randint(1, len(rand_classes))])
+
+            if message.content.startswith('$web_request'):
+                if (result := re.match(request_pattern, message.content)) is not None:
+                    response = requests.get(message.content[13:])
+                    stringo = response.content.decode()
+                    while (len(stringo) > 0):
+                        await message.channel.send(stringo[:1999])
+                        stringo = stringo[1999:]
+
+            if message.content.startswith('$img_scrape'):
+                response = requests.get(message.content[12:])
+                stringo = response.content.decode()
+                images = re.findall(img_pattern, stringo)
+                for img in images:
+                    await message.channel.send(img[5:len(img)-1])
+
+            if message.content.startswith('$stonks'):
+                await message.channel.send("*STONKS!*")
+
+            if message.content.startswith('$sandwich'):
+                await message.channel.send("Definition: The existence of grain anywhere")
+
+            if message.content.startswith('$cheese'):
+                await message.channel.send("Definition: A grain")
 
     load_dotenv()
     client.run(os.environ['TOKEN'])
