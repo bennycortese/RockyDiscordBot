@@ -1,17 +1,22 @@
 import discord
+from discord import app_commands
 import os
 import numpy as np
 import re
 import pandas as pd
 from dotenv import load_dotenv
 import requests
+import yfinance as yf
 
 
 def main():
     # print(os.listdir())
     pokemon = pd.read_csv('pokemon.csv')
-    delta_pokemon = pd.read_csv('Insurgence - Sheet1.csv')
-    client = discord.Client()
+    #delta_pokemon = pd.read_csv('Insurgence - Sheet1.csv')
+    intents = discord.Intents.default()
+    intents.message_content = True
+    client = discord.Client(intents = intents)
+    tree = app_commands.CommandTree(client)
     dice_pattern = '^\\$d[0-9]*'
     grouped_expression = '^\\$\\([0-9]*[\\.]?[0-9]*[-|\\+|\\*|/|%][0-9]*[\\.]?[0-9]*\\)$'
     pokemon_pattern = '\\$(Fire|Water|Grass|Normal|Electric|Ice|Fighting|Poison|Ground|Flying|Psychic|Bug|Rock|Ghost|Dark|Dragon|Steel|Fairy)'
@@ -22,13 +27,20 @@ def main():
     sandwich = '\\$sandwich'
     request_pattern = "\\$web_request (\\s|\\S)*"
     img_pattern = "src=\"[^\"]*\"|SRC=\"[^\"]*\""  #bizzare bug where (src|SRC) doesn't work, not sure why though, it would simplify the code
+    stock_pattern = '\\$stock .*'
 
     @client.event
     async def on_ready():
         print('We have logged in as {0.user})'.format(client))
 
+    @tree.command(name="rock", description="Testing Rocky", guild=discord.Object(
+        id=879815270779203616))  # Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
+    async def first_command(interaction):
+        await interaction.response.send_message("Hello!")
+
     @client.event
     async def on_message(message):
+
         if message.author == client.user:
             return
 
@@ -107,8 +119,8 @@ def main():
                 rand_pokemon_set = set()
                 gen_6_mons = pokemon[pokemon["pokedex_id"] <= 721]
                 pokemon_names = gen_6_mons["name"].values.tolist()
-                delta_names = delta_pokemon["name"].values.tolist()
-                pokemon_names = pokemon_names + delta_names
+                #delta_names = delta_pokemon["name"].values.tolist()
+                pokemon_names = pokemon_names #+ delta_names
                 if num > len(pokemon_names):
                     await message.channel.send("Not that many pokemon exist!")
                 else:
@@ -159,6 +171,13 @@ def main():
 
             if message.content.startswith('$cheese'):
                 await message.channel.send("Definition: A grain")
+
+            if (result := re.match(stock_pattern, message.content)) is not None:
+                stock_name = message.content[7:].upper()
+                stock = yf.download(tickers=stock_name, period='1d', interval='1m')
+                latest = stock.tail(1)["Low"]
+                await message.channel.send("Current Low Price of " + stock_name + ": $" + str(latest[0]))
+
 
     load_dotenv()
     client.run(os.environ['TOKEN'])
