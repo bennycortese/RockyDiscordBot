@@ -175,8 +175,10 @@ def main():
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
                 stock = yf.download(tickers=stock_name, period='1d', interval='1m')
-                latest = stock.tail(1)["Low"]
-                await message.channel.send("Current Low Price of " + stock_name + ": $" + str(latest[0]))
+                latest_low = stock.tail(1)["Low"]
+                await message.channel.send("Current Low Price of " + stock_name + ": $" + str(latest_low[0]))
+                latest_high = stock.tail(1)["High"]
+                await message.channel.send("Current High Price of " + stock_name + ": $" + str(latest_high[0]))
 
 
     load_dotenv()
