@@ -180,6 +180,9 @@ def main():
                 latest_high = stock.tail(1)["High"]
                 await message.channel.send("Current High Price of " + stock_name + ": $" + str(latest_high[0]))
 
+            if message.content.startswith('$你叫什么名字') or message.content.startswith('$你叫什么名字?'):
+                await message.channel.send("我叫 rocky!")
+
 
     load_dotenv()
     client.run(os.environ['TOKEN'])
