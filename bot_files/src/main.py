@@ -1,21 +1,35 @@
-import discord
-from discord import app_commands
-import os
-import numpy as np
-import re
-import pandas as pd
-from dotenv import load_dotenv
-import requests
-import yfinance as yf
+import modal
 
 
-def main():
+
+bot_image = modal.Image.debian_slim().pip_install("discord")
+bot_image = bot_image.pip_install("numpy")
+bot_image = bot_image.pip_install("pandas")
+bot_image = bot_image.pip_install("yfinance")
+bot_image = bot_image.pip_install("python-dotenv")
+
+stub = modal.Stub(image=bot_image)
+
+
+@stub.function(secret=modal.Secret.from_name("rocky-secret"))
+def main(image=bot_image):
+    import discord
+    from discord import app_commands
+    import os
+    import numpy as np
+    import re
+    import pandas as pd
+    from dotenv import load_dotenv
+    import requests
+    import yfinance as yf
+    import modal
     # print(os.listdir())
-    pokemon = pd.read_csv('pokemon.csv')
-    #delta_pokemon = pd.read_csv('Insurgence - Sheet1.csv')
+    # pokemon = pd.read_csv('pokemon.csv')
+    pokemon = None
+    # delta_pokemon = pd.read_csv('Insurgence - Sheet1.csv')
     intents = discord.Intents.default()
     intents.message_content = True
-    client = discord.Client(intents = intents)
+    client = discord.Client(intents=intents)
     tree = app_commands.CommandTree(client)
     dice_pattern = '^\\$d[0-9]*'
     grouped_expression = '^\\$\\([0-9]*[\\.]?[0-9]*[-|\\+|\\*|/|%][0-9]*[\\.]?[0-9]*\\)$'
@@ -26,7 +40,7 @@ def main():
     rand_class_pattern = '\\$rand class'
     sandwich = '\\$sandwich'
     request_pattern = "\\$web_request (\\s|\\S)*"
-    img_pattern = "src=\"[^\"]*\"|SRC=\"[^\"]*\""  #bizzare bug where (src|SRC) doesn't work, not sure why though, it would simplify the code
+    img_pattern = "src=\"[^\"]*\"|SRC=\"[^\"]*\""  # bizzare bug where (src|SRC) doesn't work, not sure why though, it would simplify the code
     stock_pattern = '\\$stock .*'
 
     @client.event
@@ -119,8 +133,8 @@ def main():
                 rand_pokemon_set = set()
                 gen_6_mons = pokemon[pokemon["pokedex_id"] <= 721]
                 pokemon_names = gen_6_mons["name"].values.tolist()
-                #delta_names = delta_pokemon["name"].values.tolist()
-                pokemon_names = pokemon_names #+ delta_names
+                # delta_names = delta_pokemon["name"].values.tolist()
+                pokemon_names = pokemon_names  # + delta_names
                 if num > len(pokemon_names):
                     await message.channel.send("Not that many pokemon exist!")
                 else:
@@ -161,7 +175,7 @@ def main():
                 stringo = response.content.decode()
                 images = re.findall(img_pattern, stringo)
                 for img in images:
-                    await message.channel.send(img[5:len(img)-1])
+                    await message.channel.send(img[5:len(img) - 1])
 
             if message.content.startswith('$stonks'):
                 await message.channel.send("*STONKS!*")
@@ -183,12 +197,16 @@ def main():
             if message.content.startswith('$你叫什么名字') or message.content.startswith('$你叫什么名字?'):
                 await message.channel.send("我叫 rocky!")
 
-
     load_dotenv()
     client.run(os.environ['TOKEN'])
 
 
+@stub.local_entrypoint
+def local_main():
+    main.call()
+
+
 if __name__ == "__main__":
-    main()
+    local_main()
 
 # Trusted resources pullup with a command, Teach him calculus,
