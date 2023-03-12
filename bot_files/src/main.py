@@ -1,17 +1,15 @@
 import modal
 
-
-
 bot_image = modal.Image.debian_slim().pip_install("discord")
 bot_image = bot_image.pip_install("numpy")
 bot_image = bot_image.pip_install("pandas")
 bot_image = bot_image.pip_install("yfinance")
 bot_image = bot_image.pip_install("python-dotenv")
 
-stub = modal.Stub(image=bot_image)
+stub = modal.Stub("rocky-bot", image=bot_image)
 
 
-@stub.function(secret=modal.Secret.from_name("rocky-secret"))
+@stub.function(secret=modal.Secret.from_name("rocky-secret"), timeout = 86400)
 def main(image=bot_image):
     import discord
     from discord import app_commands
@@ -207,6 +205,7 @@ def local_main():
 
 
 if __name__ == "__main__":
-    local_main()
+    stub.deploy("zoom")
+#local_main()
 
 # Trusted resources pullup with a command, Teach him calculus,
