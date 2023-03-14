@@ -5,6 +5,7 @@ bot_image = bot_image.pip_install("numpy")
 bot_image = bot_image.pip_install("pandas")
 bot_image = bot_image.pip_install("yfinance")
 bot_image = bot_image.pip_install("python-dotenv")
+bot_image = bot_image.pip_install("openai")
 
 stub = modal.Stub("rocky-bot", image=bot_image)
 
