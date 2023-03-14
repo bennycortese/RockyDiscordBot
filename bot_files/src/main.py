@@ -9,6 +9,19 @@ bot_image = bot_image.pip_install("python-dotenv")
 stub = modal.Stub("rocky-bot", image=bot_image)
 
 
+@stub.function(secret=modal.Secret.from_name("my-openai-secret"))
+def complete_text(prompt):
+    import openai
+    completion = openai.Completion.create(
+        model="code-davinci-002",
+        prompt=prompt,
+        temperature=0.75,
+        max_tokens=256,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0)
+    return completion.choices[0].text
+
 @stub.function(secret=modal.Secret.from_name("rocky-secret"), timeout = 86400)
 def main(image=bot_image):
     import discord
@@ -185,7 +198,9 @@ def main(image=bot_image):
                 await message.channel.send("Definition: A grain")
 
             if message.content.startswith('$chatgpt'):
-                await message.channel.send("Will implement soon!")
+                prompt_text = message.content[9:]
+                chatgpt_output = complete_text.call(prompt_text)
+                await message.channel.send(chatgpt_output)
 
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
