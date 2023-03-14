@@ -13,15 +13,16 @@ stub = modal.Stub("rocky-bot", image=bot_image)
 @stub.function(secret=modal.Secret.from_name("my-openai-secret"))
 def complete_text(prompt):
     import openai
-    completion = openai.Completion.create(
-        model="code-davinci-002",
-        prompt=prompt,
-        temperature=0.75,
-        max_tokens=256,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0)
-    return completion.choices[0].text
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}]
+        # temperature=0.75,
+        # max_tokens=4096,
+        #top_p=1,
+        #frequency_penalty=0,
+        #presence_penalty=0
+        )
+    return completion.choices[0].message.content[:1999]
 
 @stub.function(secret=modal.Secret.from_name("rocky-secret"), timeout = 86400)
 def main(image=bot_image):
