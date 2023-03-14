@@ -184,6 +184,9 @@ def main(image=bot_image):
             if message.content.startswith('$cheese'):
                 await message.channel.send("Definition: A grain")
 
+            if message.content.startswith('$chatgpt'):
+                await message.channel.send("Will implement soon!")
+
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
                 stock = yf.download(tickers=stock_name, period='1d', interval='1m')
