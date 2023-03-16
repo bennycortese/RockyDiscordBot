@@ -215,13 +215,28 @@ def main(image=bot_image):
             if message.content.startswith('$你叫什么名字') or message.content.startswith('$你叫什么名字?'):
                 await message.channel.send("我叫 rocky!")
 
+            if message.content.startswith('$help'):
+                help_commands = ""
+                help_commands += "$stock STOCK_TICKER: Provides current low and high price of a stock\n"
+                help_commands += "$chatgpt PROMPT: Provides chatgpt's interpretation of a given prompt\n"
+                help_commands += "$web_request WEBSITE_URL: Provides the data on a given url\n"
+                help_commands += "$rand class: Provides a random standard 5e class\n"
+                help_commands += "$d<Number>: Provides a random roll of a dice with a certain number, where <Number> is a number from 1 to any greater integer\n"
+                help_commands += "$(<Number>+<Number>): will add two numbers\n"
+                help_commands += "$(<Number>-<Number>): will subtract two numbers\n"
+                help_commands += "$(<Number>*<Number>): will multiply two numbers\n"
+                help_commands += "$(<Number>/<Number>): will divide two numbers\n"
+                help_commands += "$(<Number>%<Number>): will modulus two numbers\n"
+                await message.channel.send(help_commands)
+
     load_dotenv()
     client.run(os.environ['TOKEN'])
 
 
 @stub.local_entrypoint
 def local_main():
-    main.call()
+    while True:
+        main.call()
 
 
 if __name__ == "__main__":
