@@ -22,7 +22,7 @@ def complete_text(prompt):
         #frequency_penalty=0,
         #presence_penalty=0
         )
-    return completion.choices[0].message.content[:1999]
+    return completion.choices[0].message.content
 
 @stub.function(secret=modal.Secret.from_name("rocky-secret"), timeout = 86400)
 def main(image=bot_image):
@@ -202,7 +202,9 @@ def main(image=bot_image):
             if message.content.startswith('$chatgpt'):
                 prompt_text = message.content[9:]
                 chatgpt_output = complete_text.call(prompt_text)
-                await message.channel.send(chatgpt_output)
+                while (len(chatgpt_output) > 0):
+                    await message.channel.send(chatgpt_output[:1999])
+                    chatgpt_output = chatgpt_output[1999:]
 
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
