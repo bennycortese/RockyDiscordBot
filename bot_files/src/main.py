@@ -233,7 +233,7 @@ def main(image=bot_image):
     client.run(os.environ['TOKEN'])
 
 
-@stub.local_entrypoint
+@stub.function()
 def local_main():
     while True:
         main.call()
