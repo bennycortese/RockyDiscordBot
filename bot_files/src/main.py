@@ -213,6 +213,7 @@ def main(image=bot_image):
                 while (len(chatgpt_output) > 0):
                     await message.channel.send(chatgpt_output[:1999])
                     chatgpt_output = chatgpt_output[1999:]
+                # I'm going out to eat rn, will commit better stuff later
 
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
