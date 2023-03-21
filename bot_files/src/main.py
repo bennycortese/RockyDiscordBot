@@ -213,7 +213,14 @@ def main(image=bot_image):
                 while (len(chatgpt_output) > 0):
                     await message.channel.send(chatgpt_output[:1999])
                     chatgpt_output = chatgpt_output[1999:]
-                # I'm going out to eat rn, will commit better stuff later
+
+            if message.content.startswith('$pokedex: '):
+                prompt_text = message.content[11:]
+                prompt_text = "Return the pokedex entry for: " + prompt_text
+                chatgpt_output = complete_text.call(prompt_text)
+                while (len(chatgpt_output) > 0):
+                    await message.channel.send(chatgpt_output[:1999])
+                    chatgpt_output = chatgpt_output[1999:]
 
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
