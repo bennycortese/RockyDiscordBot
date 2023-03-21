@@ -214,8 +214,8 @@ def main(image=bot_image):
                     await message.channel.send(chatgpt_output[:1999])
                     chatgpt_output = chatgpt_output[1999:]
 
-            if message.content.startswith('$pokedex: '):
-                prompt_text = message.content[11:]
+            if message.content.startswith('$pokedex'):
+                prompt_text = message.content[9:]
                 prompt_text = "Return the pokedex entry for: " + prompt_text
                 chatgpt_output = complete_text.call(prompt_text)
                 while (len(chatgpt_output) > 0):
