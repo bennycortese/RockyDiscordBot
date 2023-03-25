@@ -254,6 +254,14 @@ def main(image=bot_image):
                     await message.channel.send(chatgpt_output[:1999])
                     chatgpt_output = chatgpt_output[1999:]
 
+            if message.content.startswith('$cave_johnson'):
+                prompt_text = message.content[14:]
+                prompt_text = "Pretend you are Cave Johnson from portal. " + prompt_text
+                chatgpt_output = complete_text.call(prompt_text)
+                while (len(chatgpt_output) > 0):
+                    await message.channel.send(chatgpt_output[:1999])
+                    chatgpt_output = chatgpt_output[1999:]
+
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
                 stock = yf.download(tickers=stock_name, period='1d', interval='1m')
