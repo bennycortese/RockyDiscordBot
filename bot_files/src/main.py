@@ -254,6 +254,15 @@ def main(image=bot_image):
                     await message.channel.send(chatgpt_output[:1999])
                     chatgpt_output = chatgpt_output[1999:]
 
+            if message.content.startswith('$viscous_mockery'):
+                prompt_text = message.content[17:]
+                prompt_text = "Write me a funny and harmless but still high quality insult for " + prompt_text + " in the style of monty python"
+                chatgpt_output = complete_text.call(prompt_text)
+                while (len(chatgpt_output) > 0):
+                    await message.channel.send(chatgpt_output[:1999])
+                    chatgpt_output = chatgpt_output[1999:]
+
+
             if message.content.startswith('$cave_johnson'):
                 prompt_text = message.content[14:]
                 prompt_text = "Pretend you are Cave Johnson from portal. " + prompt_text
