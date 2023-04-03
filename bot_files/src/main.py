@@ -44,7 +44,7 @@ def main(image=bot_image):
     intents.message_content = True
     client = discord.Client(intents=intents)
     tree = app_commands.CommandTree(client)
-    dice_pattern = '^\\$d[0-9]*'
+    dice_pattern = '^\\$d[0-9]+'
     grouped_expression = '^\\$\\([0-9]*[\\.]?[0-9]*[-|\\+|\\*|/|%][0-9]*[\\.]?[0-9]*\\)$'
     pokemon_pattern = '\\$(Fire|Water|Grass|Normal|Electric|Ice|Fighting|Poison|Ground|Flying|Psychic|Bug|Rock|Ghost|Dark|Dragon|Steel|Fairy)'
     stats_pattern = '\\$stats .*'
@@ -302,6 +302,14 @@ def main(image=bot_image):
 
             if message.content.startswith('$loot'):
                 prompt_text = "give me a type of loot from dnd 5e"
+                chatgpt_output = complete_text.call(prompt_text)
+                while (len(chatgpt_output) > 0):
+                    await message.channel.send(chatgpt_output[:1999])
+                    chatgpt_output = chatgpt_output[1999:]
+
+            if message.content.startswith('$doom'):
+                prompt_text = message.content[6:]
+                prompt_text = "give me an existentialist essay about " + prompt_text
                 chatgpt_output = complete_text.call(prompt_text)
                 while (len(chatgpt_output) > 0):
                     await message.channel.send(chatgpt_output[:1999])
