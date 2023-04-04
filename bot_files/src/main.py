@@ -24,6 +24,14 @@ def complete_text(prompt):
         )
     return completion.choices[0].message.content
 
+async def chatgpt_caller(message, index_number, prompt_extra_text):
+    prompt_text = message.content[index_number:]
+    prompt_text = prompt_extra_text + prompt_text
+    chatgpt_output = complete_text.call(prompt_text)
+    while len(chatgpt_output) > 0:
+        await message.channel.send(chatgpt_output[:1999])
+        chatgpt_output = chatgpt_output[1999:]
+
 @stub.function(secret=modal.Secret.from_name("rocky-secret"), timeout = 86400)
 def main(image=bot_image):
     import discord
@@ -207,44 +215,19 @@ def main(image=bot_image):
                     chatgpt_output = chatgpt_output[1999:]
 
             if message.content.startswith('$code'):
-                prompt_text = message.content[6:]
-                prompt_text = "Give me the code for the following: " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 6, "Give me the code for the following: ")
 
             if message.content.startswith('$pokedex'):
-                prompt_text = message.content[9:]
-                prompt_text = "Return the pokedex entry for: " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 9, "Return the pokedex entry for: ")
 
             if message.content.startswith('$5eStats'):
-                prompt_text = message.content[9:]
-                prompt_text = "Return the DnD 5e stat block for: " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 9, "Return the DnD 5e stat block for: ")
 
             if message.content.startswith('$random 5e character level'):
-                character_level = message.content[27:]
-                prompt_text = "Return the DnD 5e stat block for a random character of level " + character_level
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 27, "Return the DnD 5e stat block for a random character of level ")
 
             if message.content.startswith('$wiki'):
-                prompt_text = message.content[6:]
-                prompt_text = "Return a wikipedia like description of " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 6, "Return a wikipedia like description of ")
 
             if message.content.startswith('$recipe'):
                 prompt_text = message.content[8:]
