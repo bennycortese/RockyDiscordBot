@@ -230,12 +230,7 @@ def main(image=bot_image):
                 await chatgpt_caller(message, 6, "Return a wikipedia like description of ")
 
             if message.content.startswith('$recipe'):
-                prompt_text = message.content[8:]
-                prompt_text = "Return a recipe for " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 8, "Return a recipe for ")
 
             if message.content.startswith('$viscous_mockery'):
                 prompt_text = message.content[17:]
@@ -247,20 +242,11 @@ def main(image=bot_image):
 
 
             if message.content.startswith('$cave_johnson'):
-                prompt_text = message.content[14:]
-                prompt_text = "Pretend you are Cave Johnson from portal. " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 14, "Pretend you are Cave Johnson from portal. ")
 
             if message.content.startswith('$reverse_flash'):
-                prompt_text = message.content[15:]
-                prompt_text = "Pretend you are Eobard Thawne. " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 15, "Pretend you are Eobard Thawne. ")
+
 
             if message.content.startswith('$animal'):
                 prompt_text = "give me a random animal"
@@ -291,20 +277,10 @@ def main(image=bot_image):
                     chatgpt_output = chatgpt_output[1999:]
 
             if message.content.startswith('$doom'):
-                prompt_text = message.content[6:]
-                prompt_text = "give me an existentialist essay about " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 6, "give me an existentialist essay about ")
 
             if message.content.startswith('$song'):
-                prompt_text = message.content[6:]
-                prompt_text = "give me a song about " + prompt_text
-                chatgpt_output = complete_text.call(prompt_text)
-                while (len(chatgpt_output) > 0):
-                    await message.channel.send(chatgpt_output[:1999])
-                    chatgpt_output = chatgpt_output[1999:]
+                await chatgpt_caller(message, 6, "give me a song about ")
 
             if (result := re.match(stock_pattern, message.content)) is not None:
                 stock_name = message.content[7:].upper()
