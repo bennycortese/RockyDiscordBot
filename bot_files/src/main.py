@@ -9,7 +9,7 @@ bot_image = bot_image.pip_install("openai")
 
 stub = modal.Stub("rocky-bot", image=bot_image)
 
-
+#no real commit today, kbbq/Mario movie night 
 @stub.function(secret=modal.Secret.from_name("my-openai-secret"))
 def complete_text(prompt):
     import openai
