@@ -80,13 +80,16 @@ def main(image=bot_image):
             return
 
         if message.content.startswith('$rock'):
-            await message.channel.send('You rock!')
+            await message.channel.send(
+
+        if message.content.startswith('$gainesville'):
+            await message.channel.send('Go UF!')
 
         if message.content.startswith('$hello'):
             await message.channel.send('Hello! You rock!')
 
         if message.content.startswith('$roll'):
-            await message.channel.send('Hello! You rock and roll!')
+            await message.channel.send('Hello! Let's roll!')
 
         if message.content.startswith('$d'):
             if (result := re.match(dice_pattern, message.content)) is not None:
